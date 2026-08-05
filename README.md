@@ -2,6 +2,8 @@
 
 Do an xay dung he thong diem danh sinh vien su dung ESP32, RFID RC522, cam bien van tay AS608, Blynk va Google Sheets. He thong cho phep diem danh bang the RFID hoac van tay, quan ly buoi hoc, ghi nhan du lieu len Google Sheets va giam sat trang thai qua Blynk.
 
+![Tong quan he thong](images/system-overview.jpg)
+
 ## Chuc nang chinh
 
 - Diem danh sinh vien bang the RFID.
@@ -15,28 +17,38 @@ Do an xay dung he thong diem danh sinh vien su dung ESP32, RFID RC522, cam bien 
 - Luu du lieu diem danh len Google Sheets thong qua Google Apps Script.
 - Hien thi trang thai tren LCD I2C va Blynk.
 
+## Cong nghe va phan cung
+
+- ESP32.
+- RFID RC522 va the RFID MIFARE.
+- Cam bien van tay AS608.
+- LCD I2C 16x2.
+- Keypad 4x4 ket hop PCF8574.
+- Buzzer va LED bao trang thai.
+- Blynk IoT.
+- Google Sheets va Google Apps Script.
+
 ## Cau truc thu muc
 
 ```text
-Source_Code_v1/
-  Source_Code_v1.ino        Ma nguon ESP32
+firmware/
+  Source_Code_v1/
+    Source_Code_v1.ino      Ma nguon ESP32
 
-GoogleAppsScript.gs         Ma nguon Google Apps Script
-MauLopHoc.xlsx              File mau danh sach lop
-README.md                   Mo ta va huong dan cau hinh
+apps-script/
+  GoogleAppsScript.gs       Ma nguon Google Apps Script
+
+data/
+  MauLopHoc.xlsx            File mau danh sach lop
+
+hardware/
+  *.pdf                     So do mach in va tai lieu phan cung
+
+images/
+  *.jpg                     Anh mo hinh va demo he thong
+
+README.md                   Mo ta du an va huong dan cau hinh
 ```
-
-## Phan cung su dung
-
-- ESP32
-- Module RFID RC522
-- The RFID MIFARE
-- Cam bien van tay AS608
-- LCD I2C 16x2
-- Keypad 4x4 ket hop PCF8574
-- Buzzer
-- LED bao trang thai
-- Nguon 5V on dinh cho he thong
 
 ## Thu vien Arduino can cai
 
@@ -57,7 +69,7 @@ README.md                   Mo ta va huong dan cau hinh
 Mo file:
 
 ```text
-Source_Code_v1/Source_Code_v1.ino
+firmware/Source_Code_v1/Source_Code_v1.ino
 ```
 
 Sau do thay cac gia tri mau bang thong tin that cua he thong:
@@ -70,13 +82,13 @@ char pass[] = "YOUR_WIFI_PASSWORD";
 String GAS_URL = "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL";
 ```
 
-Khong nen dua mat khau Wi-Fi, Blynk token hoac link Web App that len GitHub public.
+Khong dua mat khau Wi-Fi, Blynk token hoac link Google Apps Script Web App that len GitHub public.
 
 ## Cau hinh Google Apps Script
 
 1. Mo file Google Sheets dung de luu du lieu diem danh.
 2. Chon `Extensions` > `Apps Script`.
-3. Dan noi dung file `GoogleAppsScript.gs` vao Apps Script Editor.
+3. Dan noi dung file `apps-script/GoogleAppsScript.gs` vao Apps Script Editor.
 4. Luu lai du an.
 5. Chon `Deploy` > `New deployment`.
 6. Chon loai trien khai la `Web app`.
@@ -98,9 +110,9 @@ He thong su dung cac sheet chinh:
 
 ```text
 RC522:
-SS  -> GPIO33
-RST -> GPIO4
-SCK -> GPIO18
+SS   -> GPIO33
+RST  -> GPIO4
+SCK  -> GPIO18
 MISO -> GPIO19
 MOSI -> GPIO23
 
@@ -112,8 +124,8 @@ AS608:
 TX AS608 -> GPIO34
 RX AS608 -> GPIO32
 
-Buzzer -> GPIO17
-LED do -> GPIO27
+Buzzer  -> GPIO17
+LED do  -> GPIO27
 LED xanh -> GPIO26
 ```
 
@@ -122,10 +134,10 @@ LED xanh -> GPIO26
 - Can cap nguon on dinh cho ESP32 va cac module ngoai vi.
 - Khi dang ky van tay, nguoi dung can dat va nhac tay dung theo huong dan tren LCD.
 - Neu Wi-Fi mat ket noi, he thong se thu ket noi lai truoc khi gui du lieu len Google Sheets.
-- Neu dung repo public, can thay toan bo thong tin rieng bang placeholder truoc khi upload.
-- He thong phu hop voi mo hinh do an va trinh dien; khi trien khai thuc te can bo sung co che bao mat du lieu va phan quyen truy cap.
+- Khi dung repo public, can thay toan bo thong tin rieng bang placeholder truoc khi upload.
+- He thong phu hop voi mo hinh do an va trinh dien; khi trien khai thuc te can bo sung bao mat du lieu va phan quyen truy cap.
 
 ## Tac gia
 
-Do an 1 - Thiet ke he thong diem danh bang RFID va van tay 
-SVTH: Nguyen Minh Nhat 
+Do an 1 - Thiet ke he thong diem danh bang RFID va van tay  
+SVTH: Nguyen Minh Nhat

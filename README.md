@@ -1,4 +1,4 @@
-# He thong diem danh RFID va van tay dung ESP32
+# Embedded Smart Attendance System 
 
 Do an xay dung he thong diem danh sinh vien su dung ESP32, RFID RC522, cam bien van tay AS608, Blynk va Google Sheets. He thong cho phep diem danh bang the RFID hoac van tay, quan ly buoi hoc, ghi nhan du lieu len Google Sheets va giam sat trang thai qua Blynk.
 
